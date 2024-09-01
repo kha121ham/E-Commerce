@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const User = require('../../model/User');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-//@Path     /api/user/register
+//@Path   Post  /api/user/register
 //@Desc.   User register
 //Access   Puplic
 router.post('/register',[
