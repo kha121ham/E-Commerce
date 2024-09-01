@@ -20,7 +20,7 @@ router.post('/register',[
         res.status(400).json({ errors:errors.array() });
     }
     //Destructuring user info
-    const { name, email, password, address, phone } = req.body
+    const { name, email, password } = req.body
     try {
         let user = await User.findOne({ email });
         if(user){
@@ -30,8 +30,6 @@ router.post('/register',[
             name,
             email,
             password,
-            address,
-            phone
         });
 
         //Encrypt password
