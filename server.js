@@ -19,6 +19,8 @@ app.use('/api/order',require('./routes/api/order'));
 app.use('/api/catigory',require('./routes/api/catigory'));
 app.use('/api/cart',require('./routes/api/cartManagement'));
 
+
+
 app.get('/',(req,res)=>res.send('API Running'))
 app.listen(PORT, ()=>console.log(`Server started on port ${PORT}`) );
 
