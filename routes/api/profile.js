@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const Profile = require('../../model/Profile');
 const { check, validationResult } = require('express-validator');
-
+const User = require('../../model/User');
 //@Path   Post  /api/profile
 //@Desc.   Create or update profile
 //Access   private
@@ -36,6 +36,38 @@ router.post('/',[auth,check('name','Name is required').exists()],async (req,res)
         profile = new Profile(ProfileField);
         await profile.save();
         res.json(profile);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+//@Path   Get  /api/profile
+//@Desc.   Get user Profile by id
+//Access   private
+router.get('/me',auth,async (req,res)=>{
+    try {
+        //Get profile by user ID
+        const profile =await Profile.findOne({ user:req.user.id }).populate('user',['username']);
+        //check if user profile not exist
+        if(!profile){
+            return res.status(400).json({ msg: 'This is no profile for this user' });
+            }
+            res.json(profile)
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+//@Path   Delete  /api/profile
+//@Desc.   Delete user and Profile 
+//Access   private
+router.delete('/',auth,async (req,res)=>{
+    try {
+        await Profile.findOneAndDelete({ user:req.user.id });
+        await User.findOneAndDelete({ _id:req.user.id });
+        res.json({ msg:'User Deleted' });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

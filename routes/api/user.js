@@ -9,7 +9,7 @@ const config = require('config');
 //@Desc.   User register
 //Access   Puplic
 router.post('/register',[
-    check('name','Name is required').not().isEmpty(),
+    check('username','UserName is required').not().isEmpty(),
     check('email','Invalid email').isEmail(),
     check('password','Please enter a password with 6 or more chrarcters').isLength({ min: 6 })
 ]
@@ -20,14 +20,14 @@ router.post('/register',[
         res.status(400).json({ errors:errors.array() });
     }
     //Destructuring user info
-    const { name, email, password } = req.body
+    const { username, email, password } = req.body
     try {
         let user = await User.findOne({ email });
         if(user){
             return res.status(400).json({ msg:'Invalid email or password' });
         }
         user = new User({
-            name,
+            username,
             email,
             password,
         });
