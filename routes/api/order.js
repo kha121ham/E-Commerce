@@ -38,4 +38,38 @@ router.get('/',auth,async(req,res)=>{
   }
 });
 
+//@Path   Get  /api/order/:id
+//@Desc.   Get order by id
+//Access   private
+router.get('/:id',auth,async(req,res)=>{
+  try {
+    const order = await Order.findById(req.params.id);
+    if(!order) {
+      return res.status(401).json({ msg:'No order' });
+    }
+    res.json(order);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+//@Path   Delete  /api/order/:id
+//@Desc.   Delete order by id
+//Access   private
+router.delete('/:id',auth,async(req,res)=>{
+  try {
+    const order = await Order.findById(req.params.id);
+    if(!order) {
+      return res.status(401).json({ msg:'No order' });
+    }
+    await order.deleteOne();
+    res.json({msg:'Order removed'});
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
 module.exports = router;
