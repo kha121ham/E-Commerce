@@ -20,7 +20,7 @@ router.post('/register',[
         res.status(400).json({ errors:errors.array() });
     }
     //Destructuring user info
-    const { username, email, password } = req.body
+    const { username, email, password, isAdmin } = req.body
     try {
         let user = await User.findOne({ email });
         if(user){
@@ -33,6 +33,7 @@ router.post('/register',[
         user = new User({
             username,
             email,
+            isAdmin,
             password,
         });
 
