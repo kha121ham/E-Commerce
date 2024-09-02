@@ -26,6 +26,10 @@ router.post('/register',[
         if(user){
             return res.status(400).json({ msg:'Invalid email or password' });
         }
+        const userName = await User.findOne({ username });
+        if(userName) {
+            return res.status(400).json({ msg:'Invalid username' });
+        }
         user = new User({
             username,
             email,
