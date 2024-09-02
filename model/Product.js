@@ -22,6 +22,10 @@ const ProuductSchema = new mongoose.Schema({
     },
     image:{
         trpe:[{String}]
+    },
+    createdAt:{
+        type:Date,
+        default:Date
     }
 });
 
