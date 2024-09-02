@@ -13,16 +13,6 @@ const errors = validationResult(req);
 if(!errors.isEmpty()) {
     return res.status(401).json({ errors:errors.array() });
 }
-//Destructuring
-const { name, descreption, price, category, image } =req.body;
-//Build product opejct
-const ProfileField = {};
-ProfileField.user=req.user.id;
-ProfileField.name = name;
-ProfileField.price = price;
-if(descreption) ProfileField.descreption = descreption;
-if(category) ProfileField.category = category;
-if(image) ProfileField.image = image;
 try {
     const newProduct = new Product({
         name:req.body.name,
