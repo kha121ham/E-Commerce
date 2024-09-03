@@ -59,16 +59,16 @@ router.get('/:id',async(req,res)=>{
     } catch (err) {
         console.error(err.message);
         if(err.kind === 'ObjectId') {
-          return res.status(404).json({ msg:'Post not found' })
+          return res.status(404).json({ msg:'Product not found' })
         }
         res.status(500).send('Server Error');
     }
 });
 
 
-//@Path   delete  /api/product/:id
-//@Desc.   Get Product by id
-//Access   puplic
+//@Path   Delete  /api/product/:id
+//@Desc.   Delete Product by id
+//Access   private
 router.delete('/:id',auth,isAdmin,async(req,res)=>{
     try {
         const product = await Product.findById(req.params.id);
