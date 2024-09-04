@@ -8,16 +8,16 @@ const User = require('../../model/User');
 //@Path   Post  /api/product
 //@Desc.   Create product
 //Access   Private
-router.post('/',[auth,check('name','Name is required').exists(),check('price','Price is required').exists()],isAdmin,async(req,res)=>{
+router.post('/',[auth,isAdmin,check('name','Name is required').not().isEmpty(),check('price','Price is required').not().isEmpty()],async(req,res)=>{
 const errors = validationResult(req);
 if(!errors.isEmpty()) {
-    return res.status(401).json({ errors:errors.array() });
+    return res.status(400).json({ errors:errors.array() });
 }
 try {
     const newProduct = new Product({
         name:req.body.name,
         user:req.user.id,
-        descreption:req.body.descreption,
+        description:req.body.description,
         price:req.body.price,
         category:req.body.category,
         image:req.body.image
@@ -36,8 +36,8 @@ try {
 router.get('/',async(req,res)=>{
     try {
         const products = await Product.find().sort({ date:-1 });
-        if(!products) {
-            return res.status(401).json('products is Empty');
+        if (products.length === 0) {
+            return res.status(404).json({ msg: 'No products found' }); // 404 is a more appropriate status code
         }
         res.json(products);
     } catch (err) {
@@ -53,11 +53,12 @@ router.get('/:id',async(req,res)=>{
     try {
         const product = await Product.findById(req.params.id);
         if(!product) {
-            return res.status(401).json({ msg:'Product not found' });
+            return res.status(404).json({ msg:'Product not found' });
         }
         res.json(product);
     } catch (err) {
         console.error(err.message);
+        // Handle cases where the ID is not a valid ObjectId
         if(err.kind === 'ObjectId') {
           return res.status(404).json({ msg:'Product not found' })
         }
@@ -73,7 +74,7 @@ router.delete('/:id',auth,isAdmin,async(req,res)=>{
     try {
         const product = await Product.findById(req.params.id);
         if(!product) {
-            return res.status(401).json({ msg:'Product not found' });
+            return res.status(404).json({ msg:'Product not found' });
         }
         await product.deleteOne();
         res.json({msg:'Product removed'});

@@ -4,15 +4,15 @@ const Catigory = require('../../model/Category');
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require("express-validator");
 const isAdmin = require('../../middleware/isAdmin');
-//@Path   Post  /api/catigory/add
+//@Path   Post  /api/category/add
 //@Desc.   create new catigory
 //Access   private
 router.post('/add',
     [auth,
-    check('name','Name is required').exists(),
-    check('description','Description is required')
-    ],
     isAdmin,
+    check('name','Name is required').not().isEmpty(),
+    check('description','Description is required').not().isEmpty()
+    ],
     async(req,res)=>{
 const errors = validationResult(req);
 if(!errors.isEmpty()) {
@@ -33,14 +33,14 @@ try {
 }
 });
 
-//@Path   Get  /api/catigory
+//@Path   Get  /api/category
 //@Desc.   Get all catigory
 //Access   puplic
 router.get('/',async(req,res)=>{
     try {
         const catigories = await Catigory.find().sort({ date:-1 });
         if(!catigories) {
-            return res.status(401).json({ msg:'No catigories yet' })
+            return res.status(404).json({ msg:'No categories yet' })
         }
         res.json(catigories);
     } catch (err) {
@@ -49,40 +49,40 @@ router.get('/',async(req,res)=>{
     }
 });
 
-//@Path   Get  /api/catigory/:id
+//@Path   Get  /api/category/:id
 //@Desc.   Get catigory by id
 //Access   puplic
 router.get('/:id',async(req,res)=>{
     try {
         const catigory = await Catigory.findById(req.params.id);
         if(!catigory) {
-            return res.status(401).json({ msg:'Catigory not found' });
+            return res.status(404).json({ msg:'Category not found' });
         }
         res.json(catigory);
     } catch (err) {
         console.error(err.message);
         if(err.kind === 'ObjectId') {
-          return res.status(404).json({ msg:'Post not found' })
+          return res.status(404).json({ msg:'Category not found' })
         }
         res.status(500).send('Server Error');
     }
 });
 
-//@Path   Delete  /api/catigory/:id
+//@Path   Delete  /api/category/:id
 //@Desc.   Delete catigory by id
 //Access   private
 router.delete('/:id',auth,isAdmin,async(req,res)=>{
     try {
         const catigory = await Catigory.findById(req.params.id);
         if(!catigory) {
-            return res.status(401).json({ msg:'Catigory not found' });
+            return res.status(404).json({ msg:'Category not found' });
         }
         await Catigory.deleteOne();
         res.json({msg:'Catigory removed'});
     } catch (err) {
         console.error(err.message);
         if(err.kind === 'ObjectId') {
-          return res.status(404).json({ msg:'Post not found' })
+          return res.status(404).json({ msg:'Category not found' })
         }
         res.status(500).send('Server Error');
     }

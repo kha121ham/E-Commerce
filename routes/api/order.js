@@ -18,6 +18,7 @@ router.post('/add',auth, async (req, res) => {
     await order.save();
     res.status(201).json(order);
   } catch (error) {
+    console.error(error.message);
     res.status(500).json({ error: 'Failed to create order' });
   }
 });
@@ -28,8 +29,8 @@ router.post('/add',auth, async (req, res) => {
 router.get('/',auth,async(req,res)=>{
   try {
     const orders = await Order.find();
-    if(!orders) {
-      return res.status(401).json({ msg:'No orders' });
+    if (orders.length === 0) {
+      return res.status(404).json({ msg: 'No orders found' }); // 404 is more appropriate for "No orders"
     }
     res.json(orders);
   } catch (err) {
@@ -45,11 +46,14 @@ router.get('/:id',auth,async(req,res)=>{
   try {
     const order = await Order.findById(req.params.id);
     if(!order) {
-      return res.status(401).json({ msg:'No order' });
+      return res.status(404).json({ msg:'Order not found' });
     }
     res.json(order);
   } catch (err) {
     console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Order not found' });
+    }
     res.status(500).send('Server Error');
   }
 });
@@ -61,12 +65,15 @@ router.delete('/:id',auth,async(req,res)=>{
   try {
     const order = await Order.findById(req.params.id);
     if(!order) {
-      return res.status(401).json({ msg:'No order' });
+      return res.status(404).json({ msg:'Order not found' });
     }
     await order.deleteOne();
     res.json({msg:'Order removed'});
   } catch (err) {
     console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Order not found' });
+    }
     res.status(500).send('Server Error');
   }
 });

@@ -8,7 +8,7 @@ const ProuductSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'user'
     },
-    descreption:{
+    description:{
         type:String
     },
     price:{
