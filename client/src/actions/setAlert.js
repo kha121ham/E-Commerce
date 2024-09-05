@@ -11,7 +11,7 @@ export const setAlert = (message, alertType) => dispatch => {
     dispatch({
       type:CLEAR_ALERT
     })
-  },5000)
+  },6000)
 } 
 /*({
   type: SET_ALERT,

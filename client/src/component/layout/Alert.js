@@ -12,7 +12,8 @@ const AlertComponent = () => {
     <div className={`alert alert-${alert.alertType}`}>
       {alert.message}
       <button className="close-btn" onClick={() => dispatch(clearAlert())}>
-      <i class="fa-solid fa-delete-left del"></i>
+      {alert.alertType === 'error' ? (<i class="fa-solid fa-delete-left del"></i>):
+      (<i class="fa-solid fa-circle-check check"></i>) }
       </button>
     </div>
   );

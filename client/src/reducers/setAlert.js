@@ -1,5 +1,5 @@
 // reducers/alertReducer.js
-import { SET_ALERT, CLEAR_ALERT } from '../../actions/type';
+import { SET_ALERT, CLEAR_ALERT } from '../actions/type';
 
 const initialState = {
   message: '',
