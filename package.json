@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
-    "client":"npm start --prefix client",
-    "comm":"concurrently \"npm run server\" \"npm run client\""
+    "client": "npm start --prefix client",
+    "comm": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Khaled Hamada",
   "license": "MIT",
@@ -19,7 +19,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.8.0",
     "mongoose": "^8.6.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

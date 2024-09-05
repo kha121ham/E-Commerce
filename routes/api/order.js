@@ -3,13 +3,13 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const Order = require('../../model/Order');
+const Product =require('../../model/Product');
 //@Path   Post  /api/order/add
 //@Desc.   create new order
 //Access   private
 router.post('/add',auth, async (req, res) => {
   try {
-    const { user, items, totalAmount } = req.body;
-
+    const { user, items, totalAmount, product } = req.body;
     const order = new Order({
       user,
       items,
