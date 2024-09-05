@@ -7,6 +7,7 @@ import Login from "./component/auth/Login";
 import Register from "./component/auth/Register";
 import Alert from "./component/layout/Alert";
 import setAuthToken from "./utils/setAuthToken";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
