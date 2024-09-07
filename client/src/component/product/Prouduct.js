@@ -20,7 +20,7 @@ const Prouduct = ({ getProductById, product:{ product,loading } }) => {
                 <div className="p-6">
                     <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
                     <p className="text-gray-600">{product.price}</p>
-                    <p className="text-gray-600">{product.descreption}</p>
+                    <p className="text-gray-600">{product.description}</p>
                 </div>
             </div>
             </div>
