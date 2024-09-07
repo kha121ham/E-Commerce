@@ -10,3 +10,6 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
+export const GET_PRODUCT = 'GET_PRODUCT';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const PRODUCT_ERROR = 'PRODUCT_ERROR';
