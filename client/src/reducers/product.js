@@ -1,6 +1,8 @@
 import { 
     ADD_PRODUCT,
+    GET_PRODUCTS,
     GET_PRODUCT,
+    DELETE_PRODUCT,
     PRODUCT_ERROR
  } from "../actions/type";
 
@@ -19,7 +21,7 @@ export default function(state=initialState,action) {
         case ADD_PRODUCT:
             return {
                 ...state,
-                product:payload,
+                products:[payload,...state.products],
                 loading:false
             }
         case PRODUCT_ERROR:
@@ -27,6 +29,24 @@ export default function(state=initialState,action) {
                 ...state,
                 loading:false,
                 error:payload
+            }
+        case GET_PRODUCTS:
+            return {
+                ...state,
+                products:payload,
+                loading:false
+            }
+        case GET_PRODUCT:
+            return {
+                ...state,
+                product:payload,
+                loading:false
+            }
+        case DELETE_PRODUCT:
+            return {
+                ...state,
+                products:state.products.filter(product=>product._id !== payload),
+                loading:false
             }
         default:
             return state;

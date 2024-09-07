@@ -100,3 +100,25 @@
   .nt{
     background-color:#ebe9e9;
   }
+  .product{
+    position: absolute;
+    top: 180px;
+    left: 590px;
+  }
+  .item {
+    width: 370px;
+    height: 410px;
+  }
+  .dlt{
+    margin-top: 20px;
+    margin-left: 102px;
+  }
+  .viw{
+    margin-top: 20px;
+    margin-left: 105px;
+  }
+  .viw:hover {
+    background-color: #e7e7e7;
+    padding: 6px;
+    border-radius: 8px;
+  }
