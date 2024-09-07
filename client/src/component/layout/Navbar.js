@@ -3,20 +3,24 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
+import logo from '../../img/png-clipart-web-development-responsive-web-design-e-commerce-business-ecommerce-blue-angle-thumbnail.png';
 const PropTypes = require('prop-types');
 
 const Navbar = ({ auth:{ isAuthenticated, loading }, logout }) => {
-    const authLinks = (<nav className="bg-white shadow-lg">
+    const authLinks = (<nav className="bg-white shadow-lg fade-in">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
             <div className="text-2xl font-bold text-gray-800">
-                <Link to='/'>E-Commerce</Link>
+            <div className="logo-cont">
+            <Link to='/'>E-Commerce</Link>
+            <img src={logo} alt="logo" className='logo' />
+            </div>
             </div>
 
             <div class="hidden md:flex space-x-6">
                 <Link to="/" className="text-gray-800 hover:text-blue-600">Home</Link>
                 <Link to="/shop" className="text-gray-800 hover:text-blue-600">Shop</Link>
                 <Link to="/about" className="text-gray-800 hover:text-blue-600">About</Link>
-                <Link to="/contact" className="text-gray-800 hover:text-blue-600">Profile</Link>
+                <Link to="/profile" className="text-gray-800 hover:text-blue-600">Profile</Link>
             </div>
 
             
@@ -34,7 +38,7 @@ const Navbar = ({ auth:{ isAuthenticated, loading }, logout }) => {
                 </div>
 
                 
-                <button onClick={()=>logout()}><i class="fa-solid fa-right-from-bracket"></i></button>
+                <button onClick={()=>logout()}><i class="fa-solid fa-right-from-bracket lg"></i></button>
             </div>
 
             
@@ -54,17 +58,21 @@ const Navbar = ({ auth:{ isAuthenticated, loading }, logout }) => {
             <Link to="/contact" class="text-gray-800 hover:text-blue-600">Contact</Link>
         </div>
     </nav>)
-    const guestLinks = (   <nav className="bg-white shadow-lg">
+    const guestLinks = (<nav className="bg-white shadow-lg">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
             <div className="text-2xl font-bold text-gray-800">
-                <Link to='/'>E-Commerce</Link>
+            <div className="logo-cont">
+            <Link to='/'>E-Commerce</Link>
+            <img src={logo} alt="logo" className='logo' />
+            </div>
+
             </div>
 
             <div className="hidden md:flex space-x-6">
                 <Link to="/" className="text-gray-800 hover:text-blue-600">Home</Link>
                 <Link to="/shop" className="text-gray-800 hover:text-blue-600">Shop</Link>
                 <Link to="/about" className="text-gray-800 hover:text-blue-600">About</Link>
-                <Link to="/contact" className="text-gray-800 hover:text-blue-600">Profile</Link>
+                <Link to="/profile" className="text-gray-800 hover:text-blue-600">Profile</Link>
             </div>
 
             

@@ -44,3 +44,56 @@
     color: aliceblue;
     border-radius: 8px;
   }
+  .shadow-lg{
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  nav .logo-cont {
+    display: flex;
+  }
+  nav .logo-cont .logo {
+    margin-top: 3px;
+    margin-left: 17px;
+    width: 33px;
+    height: 33px;
+  }
+  .txt{
+    width: 600px;
+    margin-top: 170px;
+  }
+  .txt:hover {
+    background-color: #f3e9e9;
+    border-radius: 20px;
+  }
+  .img1{
+    width: 780px;
+    height: 640px;
+    position: absolute;
+    left: 700px;
+    top: 80px;
+    opacity: 0.8;
+  }
+  .page2 {
+    margin-top: 200px;
+  }
+  .lg:hover {
+    color:rgba(161, 32, 9, 0.556) ;
+  }
+  .w-full{
+    width: 500px;
+    height: 500px;
+    padding: 100px;
+  }
+  .btn {
+    margin-left: 40px;
+  }
