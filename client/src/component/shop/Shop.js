@@ -15,7 +15,7 @@ const Shop = ({ getProducts, product:{ loading, products }, loadUser, auth:{ use
   },[getProducts,loadUser]);
   return (
     <Fragment>
-    {user ? user.isAdmin ? loading ? (<Spinner/>) : ( <div className="min-h-screen bg-gray-100 py-12">
+    {user ? user.isAdmin ? loading ? (<Spinner/>) : (<div className="min-h-screen bg-gray-100 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Shop Our Products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -34,7 +34,14 @@ const Shop = ({ getProducts, product:{ loading, products }, loadUser, auth:{ use
           ))}
         </div>
       </div>
-    </div>) : loading ? (<Spinner/>) : ( <div className="min-h-screen bg-gray-100 py-12">
+      <button
+                type="submit"
+                className="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300 prod"
+              >
+                <Link to='/add-product'>Add Product</Link>
+              </button>
+    </div> 
+              ) : loading ? (<Spinner/>) : ( <div className="min-h-screen bg-gray-100 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Shop Our Products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
