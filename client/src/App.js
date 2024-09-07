@@ -8,7 +8,9 @@ import Register from "./component/auth/Register";
 import Alert from "./component/layout/Alert";
 import setAuthToken from "./utils/setAuthToken";
 import Profile from "./component/profile/Profile";
+import EditProfile from "./component/profile/EditProfile";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import About from "./component/about/About";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -36,6 +38,8 @@ const App = () => {
             <Route exact path='/register' Component={Register} />
             <Route exact path='/login' Component={Login} />
             <Route exact path='/profile' Component={Profile} />
+            <Route exact path='/about' Component={About} />
+            <Route exact path='/edit-profile' element={<PrivateRoute><EditProfile /></PrivateRoute>} />
           </Routes>
         </section>
       </Fragment>

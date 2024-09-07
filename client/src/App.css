@@ -89,11 +89,14 @@
   .lg:hover {
     color:rgba(161, 32, 9, 0.556) ;
   }
-  .w-full{
+  .dv{
     width: 500px;
     height: 500px;
     padding: 100px;
   }
   .btn {
     margin-left: 40px;
+  }
+  .nt{
+    background-color:#ebe9e9;
   }

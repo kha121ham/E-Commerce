@@ -10,7 +10,7 @@ const Landing = () => {
             <div className="txt">
             <h1 className="text-4xl font-bold text-gray-800 mb-4">Discover Our Latest Collection</h1>
             <p className="text-gray-600 mb-8">Explore the best products crafted with love and care.</p>
-            <Link to="/" className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-500">Shop Now</Link>
+            <Link to="/shop" className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-500">Shop Now</Link>
             </div>
             <img src={img1} alt="Landing img" className='img1' />
         </div>
