@@ -17,7 +17,7 @@ const EditProfile = ({ getCurrentProfile, createProfile, profile: { loading, pro
             address:loading || !profile.address ? '' : profile.address,
             phone:loading || !profile.phone ? '' : profile.phone,
         });
-    },[getCurrentProfile, loading]);
+    },[getCurrentProfile, loading,profile]);
     const onChange = e => setFormData({...formData, [e.target.name]:e.target.value});
     const onSubmit = e => {
         e.preventDefault();

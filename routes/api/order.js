@@ -9,7 +9,7 @@ const Product =require('../../model/Product');
 //Access   private
 router.post('/add',auth, async (req, res) => {
   try {
-    const { user, items, totalAmount, product } = req.body;
+    const { user, items, totalAmount } = req.body;
     const order = new Order({
       user,
       items,

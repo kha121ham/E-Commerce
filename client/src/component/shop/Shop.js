@@ -27,7 +27,7 @@ const Shop = ({ getProducts, product:{ loading, products }, loadUser, auth:{ use
               <h2 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h2>
               <p className="text-gray-600 mb-4">{product.price}</p>
               <button className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
-                Add to Cart
+                <Link to={`/order/${product._id}`}>Add to Cart</Link>
               </button>
               <button type="button" onClick={()=>deleteProductById(product._id)} className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 dlt">Delete</button>
             </div>
@@ -53,7 +53,7 @@ const Shop = ({ getProducts, product:{ loading, products }, loadUser, auth:{ use
               <h2 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h2>
               <p className="text-gray-600 mb-4">{product.price}</p>
               <button className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
-                Add to Cart
+              <Link to={`/order/${product._id}`}>Add to Cart</Link>
               </button>
               <button type="button" className='viw'>
               <Link to={`/product/${product._id}`}>View details</Link>
@@ -74,7 +74,7 @@ const Shop = ({ getProducts, product:{ loading, products }, loadUser, auth:{ use
               <h2 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h2>
               <p className="text-gray-600 mb-4">{product.price}</p>
               <button className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
-                Add to Cart
+              <Link to='/login' productId={product._id}>Add to Cart</Link>
               </button>
               <button type="button" className='viw'>
               <Link to={`/product/${product._id}`}>View details</Link>

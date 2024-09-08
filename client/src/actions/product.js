@@ -22,7 +22,7 @@ export const addProduct = formData => async dispatch =>{
         });
         dispatch(setAlert('Product added','success'));
     } catch (err) {
-        const errors = err.response?.data?.errors;
+        const errors = err.response.data.errors;
 
         if (errors && Array.isArray(errors)) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'error')));
