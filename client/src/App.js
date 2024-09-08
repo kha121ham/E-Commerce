@@ -45,7 +45,7 @@ const App = () => {
             <Route exact path='/about' Component={About} />
             <Route exact path='/product/:id' Component={Prouduct} />
             <Route exact path='/shop' Component={Shop} />
-            <Route exact path='/order/:id' Component={Order} />
+            <Route exact path='/order/:id/:userId' element={<PrivateRoute><Order /></PrivateRoute>} />
             <Route exact path='/add-product' element={<PrivateRoute><AddProduct /></PrivateRoute>} />
             <Route exact path='/edit-profile' element={<PrivateRoute><EditProfile /></PrivateRoute>} />
           </Routes>
