@@ -1,6 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProductById } from '../../actions/product';
 import { useParams } from 'react-router-dom';

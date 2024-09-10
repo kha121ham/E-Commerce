@@ -82,4 +82,20 @@ export const deleteProductById = id => async dispatch => {
             payload: { msg:err.response.statusText, status:err.response.status }
         });
     }
-}
+};
+
+//Get all products by category id
+export const getProductByCategoryId = id => async dispatch => {
+    try {
+        const res = await axios.get(`/api/product/category/${id}`);
+        dispatch({
+            type:GET_PRODUCTS,
+            payload:res.data
+        })
+    } catch (err) {
+        dispatch({
+            type:PRODUCT_ERROR,
+            payload: { msg:err.response.statusText, status:err.response.status }
+        });
+    }
+};

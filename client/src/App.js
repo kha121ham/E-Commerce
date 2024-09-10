@@ -16,6 +16,9 @@ import Prouduct from "./component/product/Prouduct";
 import Shop from "./component/shop/Shop";
 import Order from "./order/Order";
 import Cart from './component/cart/Cart';
+import Category from "./component/category/Category";
+import AddCategory from "./component/category/AddCategory";
+import CategoryProduct from "./component/category/CategoryProduct";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -46,6 +49,9 @@ const App = () => {
             <Route exact path='/about' Component={About} />
             <Route exact path='/product/:id' Component={Prouduct} />
             <Route exact path='/shop' Component={Shop} />
+            <Route exact path='/category' Component={Category} />
+            <Route exact path='/category/:id' Component={CategoryProduct} />
+            <Route exact path='/add-category' element={<PrivateRoute><AddCategory /></PrivateRoute>} />
             <Route exact path='/order/:id/:userId' element={<PrivateRoute><Order /></PrivateRoute>} />
             <Route exact path='/cart/:id' element={<PrivateRoute><Cart /></PrivateRoute>} />
             <Route exact path='/add-product' element={<PrivateRoute><AddProduct /></PrivateRoute>} />

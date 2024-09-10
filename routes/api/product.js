@@ -45,6 +45,21 @@ router.get('/',async(req,res)=>{
         res.status(500).send('Server Error');
     }
 });
+//@Path   Get  /api/product/category/:categoryId
+//@Desc.   Get Products by category id
+//Access   puplic
+router.get('/category/:categoryId',async(req,res)=>{
+    try {
+        const products = await Product.find({ category:req.params.categoryId });
+        if (products.length === 0) {
+            return res.status(404).json({ msg: 'No products found' }); // 404 is a more appropriate status code
+        }
+        res.json(products);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 //@Path   Get  /api/product/:id
 //@Desc.   Get Product by id

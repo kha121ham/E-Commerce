@@ -19,8 +19,9 @@ const Navbar = ({ auth:{ isAuthenticated, loading, user }, logout, order }) => {
             <div class="hidden md:flex space-x-6">
                 <Link to="/" className="text-gray-800 hover:text-blue-600">Home</Link>
                 <Link to="/shop" className="text-gray-800 hover:text-blue-600">Shop</Link>
-                <Link to="/about" className="text-gray-800 hover:text-blue-600">About</Link>
+                <Link to="/category" className="text-gray-800 hover:text-blue-600">Categories</Link>
                 <Link to="/profile" className="text-gray-800 hover:text-blue-600">Profile</Link>
+                <Link to="/about" className="text-gray-800 hover:text-blue-600">About</Link>
             </div>
 
             
@@ -75,8 +76,9 @@ const Navbar = ({ auth:{ isAuthenticated, loading, user }, logout, order }) => {
             <div className="hidden md:flex space-x-6">
                 <Link to="/" className="text-gray-800 hover:text-blue-600">Home</Link>
                 <Link to="/shop" className="text-gray-800 hover:text-blue-600">Shop</Link>
-                <Link to="/about" className="text-gray-800 hover:text-blue-600">About</Link>
+                <Link to="/category" className="text-gray-800 hover:text-blue-600">Categories</Link>
                 <Link to="/profile" className="text-gray-800 hover:text-blue-600">Profile</Link>
+                <Link to="/about" className="text-gray-800 hover:text-blue-600">About</Link>
             </div>
 
             
