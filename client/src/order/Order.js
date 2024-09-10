@@ -6,7 +6,8 @@ import { loadUser } from '../actions/auth';
 import { getProductById } from '../actions/product';
 import { useParams } from 'react-router-dom';
 import Spinner from '../spinner/Spinner';
-
+import transParent from '../img/png-transparent-shopping-cart-icon-online-shopping-ecommerce-retail-brick-and-mortar-sales-business-drop-shipping-thumbnail.png';
+import { Link } from 'react-router-dom';
 const Order = ({ addOrder, product: { product, loading }, getProductById }) => {
   const params = useParams();
   useEffect(() => {
@@ -111,7 +112,6 @@ const Order = ({ addOrder, product: { product, loading }, getProductById }) => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm bg-gray-100"
             />
           </div>
-
           {/* Submit Button */}
           <button
             type="submit"

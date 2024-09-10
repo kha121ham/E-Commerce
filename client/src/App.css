@@ -130,3 +130,22 @@
   .frm {
     margin-top: 80px;
   }
+  .orderImg {
+    position: absolute;
+    top: 350px;
+  }
+  .dlt {
+    background-color: #e1514e;
+    color: #ffffff;
+    font-weight: bold;
+    width: 45px;
+    height: 30px;
+    border-radius: 20px;
+    
+  }
+  .dlt:hover {
+    background-color:#c9322f ;
+  }
+  .bg {
+    margin-top: 20px;
+  }

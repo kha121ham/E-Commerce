@@ -15,6 +15,7 @@ import AddProduct from "./component/product/AddProduct";
 import Prouduct from "./component/product/Prouduct";
 import Shop from "./component/shop/Shop";
 import Order from "./order/Order";
+import Cart from './component/cart/Cart';
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -46,6 +47,7 @@ const App = () => {
             <Route exact path='/product/:id' Component={Prouduct} />
             <Route exact path='/shop' Component={Shop} />
             <Route exact path='/order/:id/:userId' element={<PrivateRoute><Order /></PrivateRoute>} />
+            <Route exact path='/cart/:id' element={<PrivateRoute><Cart /></PrivateRoute>} />
             <Route exact path='/add-product' element={<PrivateRoute><AddProduct /></PrivateRoute>} />
             <Route exact path='/edit-profile' element={<PrivateRoute><EditProfile /></PrivateRoute>} />
           </Routes>

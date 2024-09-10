@@ -40,6 +40,25 @@ router.get('/',auth,async(req,res)=>{
 });
 
 //@Path   Get  /api/order/:id
+//@Desc.   Get order by user id
+//Access   private
+router.get('/user/:id',auth,async(req,res)=>{
+  try {
+    const orders = await Order.find({ user:req.params.id });
+    if(!orders) {
+      return res.status(404).json({ msg:'Order not found' });
+    }
+    res.json(orders);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Order not found' });
+    }
+    res.status(500).send('Server Error');
+  }
+});
+
+//@Path   Get  /api/order/userId
 //@Desc.   Get order by id
 //Access   private
 router.get('/:id',auth,async(req,res)=>{

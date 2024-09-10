@@ -6,7 +6,7 @@ import { logout } from '../../actions/auth';
 import logo from '../../img/png-clipart-web-development-responsive-web-design-e-commerce-business-ecommerce-blue-angle-thumbnail.png';
 const PropTypes = require('prop-types');
 
-const Navbar = ({ auth:{ isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth:{ isAuthenticated, loading, user }, logout, order }) => {
     const authLinks = (<nav className="bg-white shadow-lg fade-in">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
             <div className="text-2xl font-bold text-gray-800">
@@ -25,11 +25,15 @@ const Navbar = ({ auth:{ isAuthenticated, loading }, logout }) => {
 
             
             <div className="flex items-center space-x-4">
-            <Link to="/cart" className="text-gray-800 hover:text-blue-600">
+            {!loading && user ? (<Link to={`/cart/${user._id}`} className="text-gray-800 hover:text-blue-600">
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.4-7H6.6M7 13L6 6M7 13l1.4 7m0 0a2 2 0 002 2h4a2 2 0 002-2m-6 0h6M16 6h6m-6 0V4a2 2 0 10-4 0v2m-6 0H3"></path>
                     </svg>
-                </Link>
+                </Link>) : (<Link to='/cart' className="text-gray-800 hover:text-blue-600">
+                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.4-7H6.6M7 13L6 6M7 13l1.4 7m0 0a2 2 0 002 2h4a2 2 0 002-2m-6 0h6M16 6h6m-6 0V4a2 2 0 10-4 0v2m-6 0H3"></path>
+                    </svg>
+                </Link>)}
                 <div className="hidden md:block relative">
                     <input type="text" className="bg-gray-100 rounded-full px-4 py-2 pl-8 w-64 focus:outline-none focus:bg-white" placeholder="Search..."/>
                     <svg class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -109,9 +113,11 @@ const Navbar = ({ auth:{ isAuthenticated, loading }, logout }) => {
 }
 Navbar.propTypes = {
     auth:PropTypes.object.isRequired,
-    logout:PropTypes.func.isRequired
+    logout:PropTypes.func.isRequired,
+    order:PropTypes.object.isRequired
   }
 const mapStateToProps = state =>({
-    auth:state.auth
+    auth:state.auth,
+    order:state.order
 })
 export default connect(mapStateToProps, { logout })(Navbar);

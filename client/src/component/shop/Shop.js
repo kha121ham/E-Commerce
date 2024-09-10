@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { loadUser } from '../../actions/auth';
 import Spinner from '../../spinner/Spinner';
 import { deleteProductById } from '../../actions/product';
-
 const Shop = ({ getProducts, product:{ loading, products }, loadUser, auth:{ user }, deleteProductById }) => {
   useEffect(()=>{
     loadUser();
