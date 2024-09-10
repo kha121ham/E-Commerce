@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
