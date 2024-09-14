@@ -18,7 +18,7 @@ const ProuductSchema = new mongoose.Schema({
     category:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'category',
-        //required:true
+        required:true
     },
     image:{
         trpe:[{String}]
