@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { getCurrentProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
@@ -17,7 +18,7 @@ const EditProfile = ({ getCurrentProfile, createProfile, profile: { loading, pro
             address:loading || !profile.address ? '' : profile.address,
             phone:loading || !profile.phone ? '' : profile.phone,
         });
-    },[getCurrentProfile, loading,profile]);
+    },[getCurrentProfile, loading]);
     const onChange = e => setFormData({...formData, [e.target.name]:e.target.value});
     const onSubmit = e => {
         e.preventDefault();
