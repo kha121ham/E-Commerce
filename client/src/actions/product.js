@@ -3,7 +3,8 @@ import {
     GET_PRODUCT,
     ADD_PRODUCT,
     PRODUCT_ERROR,
-    DELETE_PRODUCT
+    DELETE_PRODUCT,
+    CLEAR_PRODUCTS
  } from "./type";
 import axios from "axios";
 import { setAlert } from "./setAlert";
@@ -99,3 +100,9 @@ export const getProductByCategoryId = id => async dispatch => {
         });
     }
 };
+
+export const clearProducts = () => async dispatch => {
+    dispatch({
+        type:CLEAR_PRODUCTS
+    })
+}

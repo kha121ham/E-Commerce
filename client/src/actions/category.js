@@ -1,7 +1,9 @@
 import {
     ADD_CATEGORY,
     GET_CATEGORIES,
-    CATEGORY_ERROR
+    GET_CATEGORY,
+    CATEGORY_ERROR,
+    DELETE_CATEGORY
     } from "./type";
 import axios from "axios";
 import { setAlert } from "./setAlert";
@@ -47,3 +49,35 @@ export const getCategories = () => async dispatch => {
         });
     }
 };
+
+//Get category by id
+export const getCatigoryById = id => async dispatch => {
+    try {
+        const res = await axios.get(`/api/category/${id}`);
+        dispatch({
+            type:GET_CATEGORY,
+            payload:res.data
+        })
+    } catch (err) {
+        dispatch({
+            type:CATEGORY_ERROR,
+            payload: { msg:err.response.statusText, status:err.response.status }
+        });
+    }
+};
+
+//Delete category by id
+export const deleteCategoryById = id => async dispatch => {
+    try {
+        await axios.delete(`/api/category/${id}`);
+        dispatch({
+            type:DELETE_CATEGORY,
+            payload:id
+        })
+    } catch (err) {
+        dispatch({
+            type:CATEGORY_ERROR,
+            payload: { msg:err.response.statusText, status:err.response.status }
+        });
+    }
+}

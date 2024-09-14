@@ -1,7 +1,9 @@
 import { 
     ADD_CATEGORY,
     GET_CATEGORIES,
-    CATEGORY_ERROR
+    GET_CATEGORY,
+    CATEGORY_ERROR,
+    DELETE_CATEGORY
     } from "../actions/type";
 
     const initialState = {
@@ -26,11 +28,23 @@ export default function(state = initialState , action) {
                 ...state,
                 categories:payload,
                 loading:false
+            };
+        case GET_CATEGORY:
+            return {
+                ...state,
+                Category:payload,
+                loading:false
             }
         case CATEGORY_ERROR:
             return {
                 ...state,
                 error:payload,
+                loading:false
+            };
+        case DELETE_CATEGORY:
+            return {
+                ...state,
+                categories:state.categories.filter(category=>category._id !== payload),
                 loading:false
             }
         default:

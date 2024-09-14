@@ -18,7 +18,7 @@ const Prouduct = ({ getProductById, product:{ product,loading } }) => {
                 <img src="https://via.placeholder.com/400" alt="Product 1" className="w-full h-48 object-cover"/>
                 <div className="p-6">
                     <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
-                    <p className="text-gray-600">{product.price}</p>
+                    <p className="text-gray-600">{product.price}$</p>
                     <p className="text-gray-600">{product.description}</p>
                 </div>
             </div>

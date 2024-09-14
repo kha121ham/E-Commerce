@@ -12,6 +12,7 @@ const AddProduct = ({ addProduct, auth: { loading, user }, loadUser }) => {
     },[loadUser]);
     const [productForm,setProductForm] = useState({
         name:'',
+        category:'',
         price:'',
         description:''
     });
@@ -19,8 +20,14 @@ const AddProduct = ({ addProduct, auth: { loading, user }, loadUser }) => {
     const onSubmit = e =>{
         e.preventDefault();
         addProduct(productForm);
+        setProductForm({
+          name:'',
+          category:'',
+          price:'',
+          description:''
+        })
     }
-    const { name, price, description } = productForm;
+    const { name, category, price, description } = productForm;
   return (
     <Fragment>
     {loading ? (<Spinner/>) : user.isAdmin ? (<div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -38,6 +45,19 @@ const AddProduct = ({ addProduct, auth: { loading, user }, loadUser }) => {
                 onChange={(e) => onChange(e)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 placeholder="Enter product name"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Category ID</label>
+              <input
+                id="category"
+                name='category'
+                type="text"
+                value={category}
+                onChange={(e) => onChange(e)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Enter Category ID"
                 required
               />
             </div>

@@ -18,7 +18,7 @@ const AddCategory = ({ loadUser, auth: { loading, user }, addCategory }) => {
 const onChange = e => setCategoryForm({ ...categoryForm, [e.target.name]: e.target.value });
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (categoryName || description) {
+    if (name && description) {
         addCategory(categoryForm);
     }
     // Clear the form
@@ -27,7 +27,7 @@ const onChange = e => setCategoryForm({ ...categoryForm, [e.target.name]: e.targ
         description:''
     })
   };
-const { categoryName, description } = categoryForm;
+const { name, description } = categoryForm;
   return (
     <Fragment>
     {loading ? (<Spinner />) : user.isAdmin ? ( <div className="container mx-auto p-6 max-w-md">
@@ -45,7 +45,7 @@ const { categoryName, description } = categoryForm;
             name='name'
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Enter category name"
-            value={categoryName}
+            value={name}
             onChange={e=>onChange(e)}
           />
         </div>

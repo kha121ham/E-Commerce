@@ -6,8 +6,6 @@ import { loadUser } from '../actions/auth';
 import { getProductById } from '../actions/product';
 import { useParams } from 'react-router-dom';
 import Spinner from '../spinner/Spinner';
-import transParent from '../img/png-transparent-shopping-cart-icon-online-shopping-ecommerce-retail-brick-and-mortar-sales-business-drop-shipping-thumbnail.png';
-import { Link } from 'react-router-dom';
 const Order = ({ addOrder, product: { product, loading }, getProductById }) => {
   const params = useParams();
   useEffect(() => {
@@ -28,7 +26,7 @@ const Order = ({ addOrder, product: { product, loading }, getProductById }) => {
       setItems(updatedItems);
       calculateTotal(updatedItems); // Recalculate total with the correct price
     }
-  }, [product]);
+  }, [items, product]);
 
   const handleItemChange = (index, event) => {
     const { name, value } = event.target;
@@ -54,6 +52,7 @@ const Order = ({ addOrder, product: { product, loading }, getProductById }) => {
       items,
       totalAmount,
     };
+    // eslint-disable-next-line no-restricted-globals
     addOrder(orderItem);
   };
 
@@ -94,7 +93,7 @@ const Order = ({ addOrder, product: { product, loading }, getProductById }) => {
                 <input
                   type="number"
                   name="price"
-                  value={item.price} // Use dynamically fetched price
+                  value={item.price} 
                   readOnly
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"
                 />
@@ -114,6 +113,12 @@ const Order = ({ addOrder, product: { product, loading }, getProductById }) => {
           </div>
           {/* Submit Button */}
           <button
+          onClick={()=>{
+            setTimeout(()=>{
+              // eslint-disable-next-line no-restricted-globals
+              location.reload();
+            },1000)
+          }}
             type="submit"
             className="w-full bg-indigo-600 text-white p-2 mt-4 rounded-md hover:bg-indigo-700"
           >
