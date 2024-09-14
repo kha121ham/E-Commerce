@@ -14,7 +14,7 @@ const Order = ({ addOrder, product: { product, loading }, getProductById }) => {
   }, [getProductById, params.id]);
 
   // Set initial state
-  const [user, setUser] = useState(`${params.userId}`); // User ID
+  const [user] = useState(`${params.userId}`); // User ID
   const [items, setItems] = useState([{ product: `${params.id}`, quantity: 1, price: '' }]); // Initial price set to 0
   const [totalAmount, setTotalAmount] = useState(0); // Total amount
 

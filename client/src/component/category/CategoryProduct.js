@@ -8,13 +8,12 @@ import { Link } from 'react-router-dom';
 import { loadUser } from '../../actions/auth';
 import ProductNotFound from '../product/ProductNotFound';
 import Spinner from '../../spinner/Spinner';
-import { getCatigoryById } from '../../actions/category';
 const CategoryProduct = ({ getProductByCategoryId, product: { products, loading }, loadUser, auth:{ user }, }) => {
     const params = useParams();
     useEffect(()=>{
         getProductByCategoryId(params.id);
         loadUser();
-    },[getProductByCategoryId,params.id,loadUser,getCatigoryById])
+    },[getProductByCategoryId, params.id, loadUser])
   return (
     <Fragment>
     {products ? loading ? (<Spinner />) : ( <div className="min-h-screen bg-gray-100 py-12">
