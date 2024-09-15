@@ -12,7 +12,7 @@ const Prouduct = ({ getProductById, product:{ product,loading } }) => {
   },[getProductById,params.id]);
   return (
     <Fragment>
-    {!product ? (<ProductNotFound />) : loading ? (<Spinner />) : (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 product">
+    {!loading ? !product ? (<ProductNotFound />) : (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 product">
     <div>
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden item">
                 <img src="https://via.placeholder.com/400" alt="Product 1" className="w-full h-48 object-cover"/>
@@ -23,7 +23,7 @@ const Prouduct = ({ getProductById, product:{ product,loading } }) => {
                 </div>
             </div>
             </div>
-    </div>) }
+    </div>): (<Spinner />) }
     
     </Fragment>
   )
