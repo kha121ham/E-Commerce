@@ -13,6 +13,9 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .navv {
+    z-index: 3;
+  }
   
   /* Success alert */
   .alert-success {
@@ -82,6 +85,7 @@
     left: 700px;
     top: 80px;
     opacity: 0.8;
+    z-index: 0;
   }
   .page2 {
     margin-top: 200px;
@@ -148,4 +152,35 @@
   }
   .bg {
     margin-top: 20px;
+  }
+  .results-list {
+    position: absolute; /* or 'fixed' if you want it to always stick on the screen */
+    top: 160px; /* Adjust based on where you want it to appear */
+    left: 0; /* Adjust as needed */
+    width: 100%; /* Full width if needed */
+    z-index: 9999; /* High z-index to make it appear above other components */
+    background-color: white; /* Set a background color to avoid transparency */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional, for better visual appearance */
+    max-height: 300px; /* Limit height if needed */
+    overflow-y: scroll; /* Scroll if content overflows */
+  }
+  .itemlist {
+    margin: 4px;
+    padding: 3px;
+  }
+  .itemlist:hover {
+    background-color: #ece2e2;
+    border-radius: 6px;
+  }
+  .srch {
+    position: absolute;
+    left: 640px;
+    top: 120px;
+  }
+  .ss {
+    position: absolute;
+    top: 230px;
+  }
+  .srr {
+    margin: 15px;
   }

@@ -19,6 +19,7 @@ import Cart from './component/cart/Cart';
 import Category from "./component/category/Category";
 import AddCategory from "./component/category/AddCategory";
 import CategoryProduct from "./component/category/CategoryProduct";
+import SearchPage from "./component/searchbar/SearchPage";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -56,6 +57,7 @@ const App = () => {
             <Route exact path='/cart/:id' element={<PrivateRoute><Cart /></PrivateRoute>} />
             <Route exact path='/add-product' element={<PrivateRoute><AddProduct /></PrivateRoute>} />
             <Route exact path='/edit-profile' element={<PrivateRoute><EditProfile /></PrivateRoute>} />
+            <Route exact path='/search' Component={SearchPage} />
           </Routes>
         </section>
       </Fragment>
